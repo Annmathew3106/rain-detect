@@ -1,13 +1,18 @@
 import requests
 import smtplib
 import os
+from datetime import datetime
 from email.mime.text import MIMEText
+from zoneinfo import ZoneInfo
 
 CITY = "Thiruvananthapuram"
 
 API_KEY = os.environ["OPENWEATHER_API_KEY"]
 EMAIL_ADDRESS = os.environ["EMAIL_ADDRESS"]
 EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
+
+start_time = datetime.now(ZoneInfo("Asia/Kolkata"))
+print(f"Script started at {start_time.isoformat(timespec='milliseconds')}")
 
 url = f"https://api.openweathermap.org/data/2.5/forecast?q={CITY}&appid={API_KEY}&units=metric"
 
